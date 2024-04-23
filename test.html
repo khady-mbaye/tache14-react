@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprendre le terme "JSX"</title>
+    <!-- lien cdn React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer></script>
+    <!-- on ajoute babel dans le projet -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function MyCar(props) {
+            return <li>I am a {props.brand}</li>;
+        }
+
+        function App() {
+            const cars = [
+                { id: 1, brand: 'Ford' },
+                { id: 2, brand: 'BMW' },
+                { id: 3, brand: 'Audi' }
+            ];
+            
+            return (<div>
+                    <h1>Who lives in my garage?</h1>
+                    <ul>
+                        {cars.map((car , index) => <MyCar key={car.id} brand={car.brand} />)}
+                        
+                    </ul>
+                </div>
+            );
+        }
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
